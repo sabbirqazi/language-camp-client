@@ -1,6 +1,13 @@
+/* eslint-disable no-unused-vars */
 import { useForm } from "react-hook-form";
+import useAuth from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+
 
 const SignUp = () => {
+  const {signUpUser, profileUpdate} = useAuth();
+  const navigate = useNavigate();
+ 
   const {
     register,
     handleSubmit,
@@ -8,8 +15,19 @@ const SignUp = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
-  };
+    signUpUser(data.email, data.password)
+    .then((result) => {
+      console.log(result.user)
+      profileUpdate(data.name, data.photoUrl);
+      navigate('/');
+     
+    })
+    .catch((err) => {
+      errors(err.message);
+    });
+    // eslint-disable-next-line no-undef
+    reset();
+  }; 
 
   return (
     <div className="flex justify-center items-center my-10 gap-10">
