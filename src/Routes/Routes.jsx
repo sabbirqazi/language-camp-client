@@ -8,6 +8,7 @@ import SignUp from "../pages/Login/SignUp";
 import Login from "../pages/Login/Login";
 
 
+
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -30,7 +31,7 @@ export const router = createBrowserRouter([
         children: [
           {
             path: "login",
-            element: <Login></Login>,
+            element: <Login></Login>
           },
           {
             path: "signup",

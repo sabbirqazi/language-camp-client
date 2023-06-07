@@ -1,41 +1,43 @@
 /* eslint-disable no-unused-vars */
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import SocialLogin from "./SocialLogin";
 
 
 const SignUp = () => {
-  const {signUpUser, profileUpdate} = useAuth();
+  const { signUpUser, profileUpdate } = useAuth();
   const navigate = useNavigate();
- 
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
+  const from = location.state?.from?.pathname || "/";
   const onSubmit = (data) => {
     signUpUser(data.email, data.password)
-    .then((result) => {
-      console.log(result.user)
-      profileUpdate(data.name, data.photoUrl);
-      navigate('/');
-     
-    })
-    .catch((err) => {
-      errors(err.message);
-    });
+      .then((result) => {
+        profileUpdate(data.name, data.photoUrl);
+
+        navigate(from, { replace: true });
+      })
+      .catch((err) => {
+        errors(err.message);
+      });
     // eslint-disable-next-line no-undef
     reset();
-  }; 
+  };
 
   return (
     <div className="flex justify-center items-center my-10 gap-10">
-   <div>
-            <img src="https://img.freepik.com/premium-vector/sign-page-abstract-concept-vector-illustration_107173-25670.jpg" alt="" />
-        </div>
+      <div>
+        <img
+          src="https://img.freepik.com/premium-vector/sign-page-abstract-concept-vector-illustration_107173-25670.jpg"
+          alt=""
+        />
+      </div>
       <div className="w-full max-w-sm ">
-     
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
@@ -111,18 +113,24 @@ const SignUp = () => {
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
           </div>
-        <div className="text-center">
-        <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          >
-            Sign Up
-          </button>
-        </div>
+          <div className="text-center">
+            <button
+              type="submit"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            >
+              Sign Up
+            </button>
+          </div>
+          <SocialLogin></SocialLogin>
+          <p className="p-3 text-xl text-center">
+            Have already an account?
+            <Link to="/login">
+              <span className=" text-sky-600"> Login here...</span>
+            </Link>
+          </p>
         </form>
       </div>
-      </div>
-
+    </div>
   );
 };
 
