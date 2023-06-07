@@ -1,54 +1,21 @@
+/* eslint-disable no-unused-vars */
+import React, { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+/* import { AuthContext } from "../providers/AuthProvider"; */
+/* import logo from "../../assets/logo.svg"; */
 
-
-import { Link } from "react-router-dom";
-
-
-
-
-
-const Navbar = () => {
- 
- 
-  /* const handleLogOut = () => {
+const NavBar = () => {
+  /* const { user, logOut } = useContext(AuthContext);
+  console.log(user);
+  const handleLogOut = () => {
     logOut()
-      .then(() => {})
+      .then()
       .catch((error) => console.log(error));
   }; */
-  const navOptions = (
-    <>
-      <li>
-        <Link to="/">Home</Link>
-      </li>
-
-      <li>
-        <Link to="/menu">Instructors</Link>
-      </li>
-      <li>
-        <Link to="/order/salad">Classes</Link>
-      </li>
-    
-      
- {/*      {user ? (
-        <>
-          <span>{user?.displayName}</span>
-          <button onClick={handleLogOut} className="btn btn-ghost">
-            LogOut
-          </button>
-        </>
-      ) : (
-        <>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-        </>
-      )} */}
-    </>
-  );
-
   return (
     <>
-      <div className="navbar fixed z-10  bg-black text-white">
-        <div className="navbar-start">
+      <div className="navbar bg-[#E0F4F5] shadow-2xl">
+        <div className="navbar-start lg:ml-20">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
               <svg
@@ -68,25 +35,208 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 space-y-2"
             >
-              {navOptions}
+              <li>
+                <NavLink
+                  to="/"
+                  style={({ isActive }) =>
+                    isActive
+                      ? {
+                          color: "#fff",
+                          background: "#015366",
+                        }
+                      : { color: "#212A3E", background: "#E0F4F5" }
+                  }
+                  aria-label="Home"
+                  title="Home"
+                >
+                  Home
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink
+                  to="/instructors"
+                  aria-label="instructors"
+                  title="instructors"
+                  style={({ isActive }) =>
+                    isActive
+                      ? {
+                          color: "#fff",
+                          background: "#015366",
+                        }
+                      : { color: "#212A3E", background: "#E0F4F5" }
+                  }
+                >
+                 Instructors
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/classes"
+                  aria-label="Classes"
+                  title="Classes"
+                  style={({ isActive }) =>
+                    isActive
+                      ? {
+                          color: "#fff",
+                          background: "#015366",
+                        }
+                      : { color: "#212A3E", background: "#E0F4F5" }
+                  }
+                >
+                 Classes
+                </NavLink>
+              </li>
+
+             {/*  {user && (
+                  <li>
+                  <NavLink
+                    to="/Dashboard"
+                    aria-label="Dashboard"
+                    title="Dashboard"
+                    style={({ isActive }) =>
+                      isActive
+                        ? {
+                            color: "#fff",
+                            background: "#015366",
+                          }
+                        : { color: "#212A3E", background: "#E0F4F5" }
+                    }
+                  >
+                   
+
+                  </NavLink>
+                </li>
+                
+              )} */}
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">LangoCamp</a>
+          <Link
+            to="/"
+            className="hidden lg:flex justify-center items-center normal-case text-xl text-[#015366]"
+          >
+           {/*  <span className="mr-1">
+              <img className="w-10 h-10" src='' alt="logo" />{" "}
+            </span>{" "} */}
+            <span>
+             LangoCamp
+            </span>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{navOptions}</ul>
+          <ul className="menu menu-horizontal px-1">
+            <li>
+              <NavLink
+                to="/"
+                aria-label="Home"
+                title="Home"
+                style={({ isActive }) =>
+                  isActive
+                    ? {
+                        color: "#fff",
+                        background: "#015366",
+                      }
+                    : { color: "#212A3E", background: "#E0F4F5" }
+                }
+              >
+                Home
+              </NavLink>
+            </li>
+
+            <li>
+                <NavLink
+                  to="/instructors"
+                  aria-label="instructors"
+                  title="instructors"
+                  style={({ isActive }) =>
+                    isActive
+                      ? {
+                          color: "#fff",
+                          background: "#015366",
+                        }
+                      : { color: "#212A3E", background: "#E0F4F5" }
+                  }
+                >
+                 Instructors
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/classes"
+                  aria-label="Classes"
+                  title="Classes"
+                  style={({ isActive }) =>
+                    isActive
+                      ? {
+                          color: "#fff",
+                          background: "#015366",
+                        }
+                      : { color: "#212A3E", background: "#E0F4F5" }
+                  }
+                >
+                 Classes
+                </NavLink>
+              </li>
+           {/*  {user && (
+              
+                {" "}
+                <li>
+                  <NavLink
+                    to="/Dashboard"
+                    aria-label="Dashboard"
+                    title="Dashboard"
+                    style={({ isActive }) =>
+                      isActive
+                        ? {
+                            color: "#fff",
+                            background: "#015366",
+                          }
+                        : { color: "#212A3E", background: "#E0F4F5" }
+                    }
+                  >
+                   
+
+                  </NavLink>
+                </li>
+               
+            
+            )} */}
+          </ul>
         </div>
-        <div className="navbar-end">
-      
-       {/*  <li>
-            <Link to="/login">Login</Link>
-          </li> */}
+        <div className="navbar-end  lg:mr-20">
+        {/*   {user && (
+            <div
+              className="tooltip tooltip-left rounded-full border-2 border-red-100 w-8 mr-4"
+              data-tip={user?.displayName}
+            >
+              <img
+                className="cursor-pointer rounded-full"
+                src={user?.photoURL}
+                alt={user?.displayName}
+              />
+            </div>
+          )}
+          {user ? (
+            <Link
+              onClick={handleLogOut}
+              className="px-4 py-3 rounded-md text-[#fff] bg-[#015366] text-[#fff]"
+            >
+              Logout
+            </Link>
+          ) : (
+            <Link
+              to={"/login"}
+              className="px-4 py-3 rounded-md text-[#fff] bg-[#015366] text-[#fff]"
+            >
+              Login
+            </Link>
+          )} */}
         </div>
       </div>
     </>
   );
 };
 
-export default Navbar;
+export default NavBar;

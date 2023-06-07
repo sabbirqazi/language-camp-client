@@ -1,9 +1,8 @@
 import { Outlet } from "react-router-dom";
-
-import Footer from "../pages/Shared/Footer/Footer";
 import NavBar from "../pages/Shared/NavBar/NavBar";
+import Footer from "../pages/Shared/Footer/Footer";
 
-const Main = () => {
+const LoginLayout = () => {
   return (
     <div>
       <NavBar></NavBar>
@@ -15,4 +14,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default LoginLayout;
