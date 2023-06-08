@@ -175,7 +175,7 @@ const NavBar = () => {
             {user && (
               <li>
                 <NavLink
-                  to="/Dashboard"
+                  to="/dashboard"
                   aria-label="Dashboard"
                   title="Dashboard"
                   style={({ isActive }) =>

@@ -6,6 +6,9 @@ import Instructors from "../pages/Instructors/Instructors";
 import LoginLayout from "../Layout/LoginLayout";
 import SignUp from "../pages/Login/SignUp";
 import Login from "../pages/Login/Login";
+import PrivateRoute from "./PrivateRoute";
+import Dashboard from "../Layout/Dashboard";
+import ManageUsers from "../pages/Dashboard/ManageUsers/ManageUsers";
 
 
 
@@ -24,6 +27,17 @@ export const router = createBrowserRouter([
                 element: <Instructors></Instructors>,
               },
             ]
+      },
+      {
+        path: 'dashboard',
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>, 
+        children: [
+          {
+            path: 'manageusers', 
+            element: <ManageUsers></ManageUsers>
+          }
+        
+        ]
       },
       {
         path: "/",
