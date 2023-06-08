@@ -6,6 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import { useState } from 'react';
 import SocialLogin from './SocialLogin';
+import Swal from 'sweetalert2';
 
 const Login = () => {
     const { loginUser, setLoading } = useAuth();
@@ -19,6 +20,16 @@ const Login = () => {
       .then((result) => {
         const loggedInUser = result.user
         console.log(loggedInUser)
+        reset();
+        Swal.fire({
+          title: 'User Login Successful.',
+          showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+          }
+      });
         navigate(from, { replace: true });
       })
       .catch((error) => {

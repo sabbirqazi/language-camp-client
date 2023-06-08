@@ -1,9 +1,10 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "./SocialLogin";
-
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const { signUpUser, profileUpdate } = useAuth();
@@ -18,15 +19,36 @@ const SignUp = () => {
   const onSubmit = (data) => {
     signUpUser(data.email, data.password)
       .then((result) => {
-        profileUpdate(data.name, data.photoUrl);
-
-        navigate(from, { replace: true });
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        profileUpdate(data.name, data.photoUrl).then(() => {
+          const saveUser = { name: data.name, email: data.email };
+          fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(saveUser),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                reset();
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "User created successfully.",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+                navigate(from, { replace: true });
+              }
+            });
+        });
       })
       .catch((err) => {
         errors(err.message);
       });
-    // eslint-disable-next-line no-undef
-    reset();
   };
 
   return (
