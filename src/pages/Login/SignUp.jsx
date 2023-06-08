@@ -13,6 +13,7 @@ const SignUp = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
   const from = location.state?.from?.pathname || "/";
@@ -32,6 +33,7 @@ const SignUp = () => {
           })
             .then((res) => res.json())
             .then((data) => {
+              console.log(data)
               if (data.insertedId) {
                 reset();
                 Swal.fire({

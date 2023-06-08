@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 
 const Login = () => {
     const { loginUser, setLoading } = useAuth();
-  const { register, handleSubmit, formState: { errors }} = useForm();
+  const { register, handleSubmit, reset, formState: { errors }} = useForm();
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
@@ -20,7 +20,7 @@ const Login = () => {
       .then((result) => {
         const loggedInUser = result.user
         console.log(loggedInUser)
-        reset();
+        
         Swal.fire({
           title: 'User Login Successful.',
           showClass: {
