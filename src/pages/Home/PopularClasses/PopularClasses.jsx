@@ -3,6 +3,8 @@ import ClassCard from "../../../components/ClassCard";
 
 const PopularClasses = () => {
   const [classes, setClasses] = useState([]);
+
+  //TODO: classes will be shown using sort, if payment done enrollment will increase . sorting implemention has to be done according to enrollment
   useEffect(() => {
     fetch("http://localhost:5000/classes")
       .then((res) => res.json())

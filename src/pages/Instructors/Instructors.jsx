@@ -1,9 +1,10 @@
+import PopularInstructors from "../Home/PopularInstructors/PopularInstructors";
 
 
 const Instructors = () => {
     return (
         <div>
-           <h1>This is Instructors</h1> 
+           <PopularInstructors></PopularInstructors>
         </div>
     );
 };
