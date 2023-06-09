@@ -1,7 +1,33 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+
+import { useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 
 const ClassCard = ({ classItem }) => {
+
+  const {user} = useAuth();
+  const navigate = useNavigate();
+
+  const handleSelectCourse = (classItem) => {
+    if (user) {
+      // User is logged in, perform the desired action
+      // Pass the classItem.id to the API call or perform any other logic
+      const saveMyClass = { userName: user.displayName, email: user.email, courseName: classItem.name, instructor: classItem.instructorName, seats: classItem.availableSeats, price: classItem.price };
+          fetch("http://localhost:5000/postmyclass", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(saveMyClass),
+          })
+      console.log("Selected Course:", classItem.id);
+    } else {
+      // User is not logged in, redirect to the login page
+      navigate("/login");
+    }
+  };
   console.log(classItem);
   return (
     <div className="mx-auto px-4">
@@ -16,7 +42,7 @@ const ClassCard = ({ classItem }) => {
         <p className="text-gray-600">Available seats: {classItem.availableSeats}</p>
         <p className="text-gray-600">Price: {classItem.price}</p>
         <div className="flex justify-center mt-4">
-          <button className="bg-blue-500 text-white px-4 py-2 rounded-md">
+        <button className="bg-blue-500 text-white px-4 py-2 rounded-md" onClick={() => handleSelectCourse(classItem)}>
             Select Course
           </button>
         </div>
