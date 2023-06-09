@@ -3,7 +3,7 @@ import { NavLink, Outlet } from "react-router-dom";
 const Dashboard = () => {
   // TODO: load data from the server to have dynamic isAdmin and isInstructor based on Data
   const isAdmin = false;
-  const isInstructor = false;
+  const isInstructor = true;
   return (
     <div className="drawer lg:drawer-open ">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -36,12 +36,13 @@ const Dashboard = () => {
           ) : isInstructor ? (
             <>
               <li>
+                <NavLink to="/dashboard/myclasses"> My Classes</NavLink>
+              </li>
+              <li>
                 <NavLink to="/dashboard/addclass"> Add Class</NavLink>
               </li>
 
-              <li>
-                <NavLink to="/dashboard/myclasses"> My Classes</NavLink>
-              </li>
+            
             </>
           ) : (
             <>
