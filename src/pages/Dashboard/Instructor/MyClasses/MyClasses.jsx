@@ -1,6 +1,5 @@
 
-//TODO : default vabe jakhon instructor post korbe tokhon status:'pending' hobe. jakhon admin ei sob class guloke pabe takhon admin chaile update er maddhome status ke pending theke approved kobe. jehe ekhn status change hoye geche tai ekhn status er upor find chaliye display korben.
-
+//TODO : feedback
 import { useEffect, useState } from "react";
 import useAuth from "../../../../hooks/useAuth";
 
@@ -38,6 +37,7 @@ const MyClasses = () => {
                 >
                   {myClass.status}
                 </button>
+                <p>Feedback{myClass.feedback}</p>
               </div>
             ))}
           </div>

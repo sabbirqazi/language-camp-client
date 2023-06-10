@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import useAuth from "../../../../hooks/useAuth";
-import { FaMoneyBill, FaRemoveFormat } from "react-icons/fa";
+import { FaMoneyBill, FaRemoveFormat, FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const SelectedClass = () => {
   const { user } = useAuth();
@@ -55,46 +56,52 @@ const SelectedClass = () => {
 
   return (
     <div className="w-[90%]">
-      <h3 className="text-3xl font-semibold my-4">
-        Total Selected Class: {selectedClass.length}
-      </h3>
-      <div className="overflow-x-auto">
-        <table className="table table-zebra w-full">
-          {/* head */}
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Course</th>
-              <th>Price</th>
-              <th>Action</th>
-              <th>Payment</th>
-            </tr>
-          </thead>
-          <tbody>
-            {selectedClass?.map((course, index) => (
-              <tr key={course._id}>
-                <td>{index + 1}</td>
-                <td>{course.courseName}</td>
-                <td>{course.price}</td>
-                <td
-                  onClick={() => handleDelete(course._id)}
-                  className="btn btn-ghost bg-teal-600  text-white"
-                >
-                  <FaRemoveFormat></FaRemoveFormat>
-                </td>
+  <h3 className="text-3xl font-semibold my-4">
+    Total Selected Class: {selectedClass.length}
+  </h3>
+  <div className="overflow-x-auto">
+    <table className="table table-zebra w-full">
+      {/* head */}
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Course</th>
+          <th>Price</th>
+          <th>Delete</th>
+          <th>Payment</th>
+        </tr>
+      </thead>
+      <tbody>
+        {selectedClass?.map((course, index) => (
+          <tr key={course._id}>
+            <td>{index + 1}</td>
+            <td>{course.courseName}</td>
+            <td>${course.price}</td>
+            <td className="space-x-2">
+              <button
+                onClick={() => handleDelete(course._id)}
+                className="btn btn-ghost bg-teal-600 text-white"
+              >
+                <FaTrashAlt />
+              </button>
+            </td>
+            <td>
+           <Link to={`/dashboard/payment/${course._id}`}>
+           <button
+                onClick={() => handlePayment(course)}
+                className="btn btn-ghost bg-teal-600 text-white"
+              >
+                <FaMoneyBill className="" />
+              </button>
+           </Link>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</div>
 
-                <td
-                  onClick={() => handlePayment(course)}
-                  className="btn bg-teal-600  text-white "
-                >
-                  <FaMoneyBill className=""></FaMoneyBill>{" "}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
   );
 };
 

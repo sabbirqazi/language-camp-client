@@ -66,8 +66,6 @@ const ManageClasses = () => {
   const handleSendFeedback = (classItem) => {
     setSelectedClassId(classItem._id);
     setFeedbackModalOpen(true);
-
-    console.log(`Send feedback for class ${classItem}`);
   };
   const handleSubmitFeedback = () => {
     const classesItem = classes.find((item) => item._id === selectedClassId);
@@ -92,10 +90,6 @@ const ManageClasses = () => {
           });
         }
       });
-    // Send the feedback text to the instructor
-    console.log(`Send feedback for class ${selectedClassId}: ${feedbackText}`);
-
-    // Close the feedback modal and reset the feedback text
     setFeedbackModalOpen(false);
     setFeedbackText("");
   };
@@ -104,10 +98,10 @@ const ManageClasses = () => {
     <div className="flex justify-center mt-8">
       <div className="w-full">
         <h2 className="text-2xl font-bold mb-4 text-center">Classes</h2>
-        <table className="table text-md table-zebra w-full p-4">
+        <table className="table text-sm table-zebra w-full p-4">
           <thead>
             <tr>
-              <th className=" text-lg py-2 px-4 border-b">£</th>
+              <th className=" text-lg py-2 px-4 border-b">#</th>
               <th className=" text-lg py-2 px-4 border-b">Name</th>
               <th className=" text-lg py-2 px-4 border-b">Image</th>
               <th className=" text-lg py-2 px-4 border-b">Email</th>
@@ -132,7 +126,7 @@ const ManageClasses = () => {
                 </td>
                 <td className="py-2 px-4 border-b">{classItem.email}</td>
                 <td className="py-2 px-4 border-b">{classItem.seats}</td>
-                <td className="py-2 px-4 border-b">{classItem.price}</td>
+                <td className="py-2 px-4 border-b">${classItem.price}</td>
                 <td className="py-2 px-4 border-b">{classItem.status}</td>
                 <td className="py-2 px-4 border-b">
                   <button
@@ -181,7 +175,7 @@ const ManageClasses = () => {
                 className="bg-blue-500 text-white px-4 py-2 rounded mr-2"
                 onClick={handleSubmitFeedback}
               >
-                Send
+                Submit
               </button>
               <button
                 className="bg-gray-300 text-gray-700 px-4 py-2 rounded"
