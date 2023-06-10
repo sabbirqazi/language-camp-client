@@ -1,19 +1,14 @@
-import { useEffect, useState } from "react";
+
+import { useQuery } from "@tanstack/react-query";
 import { FaChalkboardTeacher, FaUserShield } from "react-icons/fa";
 import Swal from "sweetalert2";
 const ManageUsers = () => {
-    const [users, setUsers] = useState([]);
-    useEffect(() => {
-    fetch("http://localhost:5000/users")
-      .then((res) => res.json())
-      .then((data) => setUsers(data))
-      
-  }, []);
+ 
 
-/*   const { data: users = [], refetch } = useQuery(['users'], async () => {
+   const { data: users = [], refetch } = useQuery(['users'], async () => {
     const res = await fetch('http://localhost:5000/users');
     return res.json();
-}) */
+}) 
   const handleMakeAdmin = (user) => {
     fetch(`http://localhost:5000/users/admin/${user._id}`, {
         method: 'PATCH'
@@ -22,7 +17,7 @@ const ManageUsers = () => {
     .then(data => {
         console.log(data)
         if(data.modifiedCount){
-            
+            refetch();
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
@@ -34,7 +29,23 @@ const ManageUsers = () => {
     })
   }
   const handleMakeInstructor = (user) => {
-    console.log(user)
+    fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+        method: 'PATCH'
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(data)
+        if(data.modifiedCount){
+            refetch();
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: `${user.name} is an Instructor Now!`,
+                showConfirmButton: false,
+                timer: 1500
+              })
+        }
+    })
   }
     return (
         <div className="w-[90%]">
@@ -61,7 +72,7 @@ const ManageUsers = () => {
                             <td >{ user.role === 'admin' ? 'admin' :
                                 <button onClick={() => handleMakeAdmin(user)} className="btn btn-ghost bg-purple-600  text-white "><FaUserShield></FaUserShield></button> 
                                 }</td>
-                            <td>{user.role=== 'instructor' ? 'instructor': <button onClick={() => handleMakeInstructor(user)} className="btn btn-ghost bg-blue-600  text-white "><FaChalkboardTeacher></FaChalkboardTeacher></button>}</td>
+                            <td>{user.role === 'instructor' ? 'instructor': <button onClick={() => handleMakeInstructor(user)} className="btn btn-ghost bg-blue-600  text-white "><FaChalkboardTeacher></FaChalkboardTeacher></button>}</td>
                         </tr>)
                     }
                     

@@ -1,9 +1,31 @@
+import { useEffect, useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+
 
 const Dashboard = () => {
   // TODO: load data from the server to have dynamic isAdmin and isInstructor based on Data
-  const isAdmin = true;
-  const isInstructor = false;
+  // role based data 
+  const [isInstructor, setIsInstructor] = useState(false)
+  const [isAdmin, setIsAdmin] = useState(false)
+  const {user} =useAuth();
+  useEffect(()=> {
+    fetch(`http://localhost:5000/users/instructor/${user.email}`)
+    .then(res => res.json())
+    .then(data => {setIsInstructor(data)})
+
+  }, [user.email]);
+  console.log(isInstructor);
+
+  useEffect(()=> {
+    fetch(`http://localhost:5000/users/admin/${user.email}`)
+    .then(res => res.json())
+    .then(data => {setIsAdmin(data)})
+
+  }, [user.email])
+ console.log(isAdmin)
+  /* const isAdmin = false; */
+/*   const isInstructor = true; */
   return (
     <div className="drawer lg:drawer-open ">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -19,30 +41,26 @@ const Dashboard = () => {
       <div className="drawer-side bg-sky-500">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80">
-          {isAdmin ? (
+          {isAdmin?.admin ? (
             <>
               <li>
                 <NavLink to="/dashboard/home"> Admin Home</NavLink>
               </li>
-
               <li>
                 <NavLink to="/dashboard/manageclasses"> Manage Classes</NavLink>
               </li>
-
               <li>
                 <NavLink to="/dashboard/manageusers">Manage Users</NavLink>
               </li>
             </>
-          ) : isInstructor ? (
+          ) : isInstructor?.instructor ? (
             <>
               <li>
                 <NavLink to="/dashboard/instructorclasses"> My Classes</NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/addclass"> Add Class</NavLink>
+                <NavLink to="/dashboard/addclass">Add Class</NavLink>
               </li>
-
-            
             </>
           ) : (
             <>

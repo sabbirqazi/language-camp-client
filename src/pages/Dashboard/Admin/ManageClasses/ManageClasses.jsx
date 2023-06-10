@@ -3,6 +3,10 @@ import { useEffect, useState } from "react";
 
 const ManageClasses = () => {
     const [classes, setClasses] = useState([]);
+
+    const [feedbackModalOpen, setFeedbackModalOpen] = useState(false);
+    const [feedbackText, setFeedbackText] = useState('');
+    const [selectedClassId, setSelectedClassId] = useState('');
     useEffect(() => {
       fetch("http://localhost:5000/classes")
         .then((res) => res.json())
@@ -22,14 +26,26 @@ const ManageClasses = () => {
       };
     
       const handleDeny = (classId) => {
+      
         // Handle deny logic
         console.log(`Deny class ${classId}`);
       };
     
       const handleSendFeedback = (classId) => {
+        setSelectedClassId(classId);
+    setFeedbackModalOpen(true);
         // Handle send feedback logic
         console.log(`Send feedback for class ${classId}`);
       };
+      const handleSubmitFeedback = () => {
+        // Send the feedback text to the instructor
+        console.log(`Send feedback for class ${selectedClassId}: ${feedbackText}`);
+    
+        // Close the feedback modal and reset the feedback text
+        setFeedbackModalOpen(false);
+        setFeedbackText('');
+      };
+    
     return (
         <div className="flex justify-center mt-8">
         <div className="w-full">
@@ -90,6 +106,27 @@ const ManageClasses = () => {
             </tbody>
           </table>
         </div>
+        {feedbackModalOpen && (
+        <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
+          <div className="bg-white rounded-lg p-6 max-w-sm">
+            <h2 className="text-xl font-bold mb-4">Send Feedback</h2>
+            <textarea
+              className="w-full h-32 border border-gray-300 p-2 mb-4"
+              placeholder="Enter your feedback here"
+              value={feedbackText}
+              onChange={(e) => setFeedbackText(e.target.value)}
+            ></textarea>
+            <div className="flex justify-end">
+              <button className="bg-blue-500 text-white px-4 py-2 rounded mr-2" onClick={handleSubmitFeedback}>
+                Send
+              </button>
+              <button className="bg-gray-300 text-gray-700 px-4 py-2 rounded" onClick={() => setFeedbackModalOpen(false)}>
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       </div>
     );
 };
