@@ -74,10 +74,12 @@ const CheckoutForm = ({course, price}) => {
                 email: user?.email,
                 transactionId: paymentIntent.id,
                 price, 
-                name: course.name,
-                date: new Date(),
+                name: course.courseName,
+                instructor: course.instructor,
+                thumbnail: course.thumbnail,
+                date: new Date().toLocaleDateString(),
                 courseId: course._id,
-                status: 'pending',
+                status: 'succeeded',
             }
         /*     const payment = {
                 email: user.email,
@@ -93,7 +95,7 @@ const CheckoutForm = ({course, price}) => {
             fetch('http://localhost:5000/payments', {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({payment}),
+                body: JSON.stringify(payment),
               })
               .then((res) => res.json())
               .then((data) => console.log(data));

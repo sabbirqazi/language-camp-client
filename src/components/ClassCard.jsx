@@ -14,7 +14,7 @@ const ClassCard = ({ classItem }) => {
     if (user) {
       // User is logged in, perform the desired action
       // Pass the classItem.id to the API call or perform any other logic
-      const saveMyClass = { userName: user.displayName, email: user.email, courseName: classItem.name, instructor: classItem.instructorName, seats: classItem.availableSeats, price: classItem.price };
+      const saveMyClass = { userName: user.displayName, email: user.email, courseName: classItem.name, instructor: classItem.instructorName, thumbnail:classItem.image, seats: classItem.availableSeats, price: classItem.price };
           fetch("http://localhost:5000/postmyclass", {
             method: "POST",
             headers: {
@@ -32,7 +32,7 @@ const ClassCard = ({ classItem }) => {
   return (
     <div className="mx-auto px-4">
       <div className="bg-white rounded-md shadow-md p-4 w-96">
-        <img
+        <img 
           src={classItem.image}
           alt={classItem.name}
           className="w-full h-40 object-cover rounded-md"

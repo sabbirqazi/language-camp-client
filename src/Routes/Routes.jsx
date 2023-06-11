@@ -15,6 +15,8 @@ import SelectedClass from "../pages/Dashboard/Student/SelectedClass/SelectedClas
 import MyClasses from "../pages/Dashboard/Instructor/MyClasses/MyClasses";
 import ManageClasses from "../pages/Dashboard/Admin/ManageClasses/ManageClasses";
 import Payment from "../pages/Dashboard/Student/Payment/Payment";
+import PaymentHistory from "../pages/Dashboard/Student/PaymentHistory/PaymentHistory";
+import EnrolledClass from "../pages/Dashboard/Student/EnrolledClass/EnrolledClass";
 
 
 
@@ -65,6 +67,14 @@ export const router = createBrowserRouter([
           {
             path: 'selectedclass', 
             element: <SelectedClass></SelectedClass>
+          },
+          {
+            path: 'paymenthistory', 
+            element: <PaymentHistory></PaymentHistory>
+          },
+          {
+            path: 'enrolledclass', 
+            element: <EnrolledClass></EnrolledClass>
           },
           {
             path: 'payment/:courseId', 
