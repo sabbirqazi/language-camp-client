@@ -8,7 +8,7 @@ const ManageClasses = () => {
 
 
   const [feedbackModalOpen, setFeedbackModalOpen] = useState(false);
-  const [feedbackText, setFeedbackText] = useState("");
+  const [feedbackText, setFeedbackText] = useState("OK");
   const [selectedClassId, setSelectedClassId] = useState("");
 
 

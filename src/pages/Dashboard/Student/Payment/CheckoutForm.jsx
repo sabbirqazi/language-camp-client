@@ -5,8 +5,8 @@ import { useEffect, useState } from "react";
 import useAuth from "../../../../hooks/useAuth";
 
 
-const CheckoutForm = ({course, price}) => {
-    console.log(typeof(price))
+const CheckoutForm = ({newClassId, course, price}) => {
+    console.log(course)
     const stripe = useStripe();
     const elements = useElements();
     const [cardError, setCardError] =  useState('')
@@ -78,7 +78,7 @@ const CheckoutForm = ({course, price}) => {
                 instructor: course.instructor,
                 thumbnail: course.thumbnail,
                 date: new Date().toLocaleDateString(),
-                courseId: course._id,
+                classId: newClassId,
                 status: 'succeeded',
             }
         /*     const payment = {

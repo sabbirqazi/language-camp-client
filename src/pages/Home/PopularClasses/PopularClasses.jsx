@@ -13,11 +13,8 @@ const PopularClasses = () => {
         popularClasses.sort((a, b) => b.availableSeats - a.availableSeats);
         setClasses(popularClasses);
       })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
   }, []);
-   console.log(classes)
+/* slice 6ta */
   return (
     <div className="m-20">
         <h1 className="text-5xl font-bold text-center mb-10">Our Popular Classes</h1>

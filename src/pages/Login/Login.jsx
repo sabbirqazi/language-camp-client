@@ -1,43 +1,47 @@
 /* eslint-disable no-undef */
 
-
-import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
-import useAuth from '../../hooks/useAuth';
-import { useState } from 'react';
-import SocialLogin from './SocialLogin';
-import Swal from 'sweetalert2';
+import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import { useState } from "react";
+import SocialLogin from "./SocialLogin";
+import Swal from "sweetalert2";
 
 const Login = () => {
-    const { loginUser, setLoading } = useAuth();
-  const { register, handleSubmit, reset, formState: { errors }} = useForm();
+  const { loginUser, setLoading } = useAuth();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
-
+  const from = location.state?.from?.pathname || "/";
   const onSubmit = (data) => {
     loginUser(data.email, data.password)
-    setLoading()
       .then((result) => {
-        const loggedInUser = result.user
-        console.log(loggedInUser)
+        const loggedInUser = result.user;
+        console.log(loggedInUser);
+        setLoading()
+        if(loggedInUser){
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "User logged in successfully.",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
         
-        Swal.fire({
-          title: 'User Login Successful.',
-          showClass: {
-              popup: 'animate__animated animate__fadeInDown'
-          },
-          hideClass: {
-              popup: 'animate__animated animate__fadeOutUp'
-          }
-      });
         navigate(from, { replace: true });
       })
       .catch((error) => {
-        console.log(error.message)
+        console.log(error.message);
         setErrorMessage(error.message);
       });
-      reset();
-  }; 
+    reset();
+  };
 
   return (
     <div className="mt-10">
@@ -57,10 +61,10 @@ const Login = () => {
           >
             <h2 className="text-2xl font-bold mb-4">Log In</h2>
             {errorMessage && (
-            <p className="text-red-500 text-sm mb-4">
-              <span className="font-bold">Error:</span> {errorMessage}
-            </p>
-          )}
+              <p className="text-red-500 text-sm mb-4">
+                <span className="font-bold">Error:</span> {errorMessage}
+              </p>
+            )}
             {errors.email && (
               <p className="text-red-500 text-sm mb-4">
                 <span className="font-bold">Error:</span> Email is required
@@ -78,8 +82,7 @@ const Login = () => {
                 id="email"
                 type="email"
                 placeholder="Enter your email"
-                
-                {...register("email",{ required: true })}
+                {...register("email", { required: true })}
               />
             </div>
             {errors.password && (
@@ -99,11 +102,10 @@ const Login = () => {
                 id="password"
                 type="password"
                 placeholder="Enter your password"
-                
-                {...register("password",{ required: true })}
+                {...register("password", { required: true })}
               />
             </div>
-          
+
             <div className=" text-center">
               <button
                 type="submit"

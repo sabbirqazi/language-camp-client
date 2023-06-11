@@ -2,10 +2,21 @@
 
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
+import { useEffect, useState } from "react";
+import { FaMoon } from "react-icons/fa";
 
 const NavBar = () => {
   const { user, logOut } = useAuth();
-  console.log(user);
+  const [theme, setTheme] = useState('mytheme');
+
+  useEffect(() => {
+    document.body.setAttribute('data-theme', theme);
+  }, [theme]);
+
+  const handleThemeChange = (selectedTheme) => {
+    // setTheme(selectedTheme);
+    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
+};
   const handleLogOut = () => {
     logOut()
       .then()
@@ -191,6 +202,24 @@ const NavBar = () => {
             )}
           </ul>
         </div>
+        {/* 
+        dark mode
+        */}
+         <li className={`container ${theme}`}>
+                <input type="checkbox" className="toggle" checked={theme === 'dark'} onChange={handleThemeChange} />
+                {theme === 'light' ? (
+                    <label className="btn theme-btn  hidden" onClick={handleThemeChange}>
+                        Dark Theme
+                    </label>
+                ) : (
+                    <label className="btn theme-btn hidden " onClick={handleThemeChange}>
+                        Light Theme
+                    </label>
+                )}
+            </li>
+        {/* 
+        dark mode
+        */}
         <div className="navbar-end  lg:mr-20">
           {user && (
             <div

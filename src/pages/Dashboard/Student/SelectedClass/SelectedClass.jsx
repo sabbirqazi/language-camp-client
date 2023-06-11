@@ -21,6 +21,7 @@ const SelectedClass = () => {
       });
   }, [user, url]);
   const { _id } = selectedClass;
+  console.log(selectedClass)
   const handlePayment = () => {
     console.log("yes");
   };
@@ -86,7 +87,8 @@ const SelectedClass = () => {
               </button>
             </td>
             <td>
-           <Link to={`/dashboard/payment/${course._id}`}>
+           <Link to={`/dashboard/payment/${course.classId}`}>
+            {console.log(course.classId)}
            <button
                 onClick={() => handlePayment(course)}
                 className="btn btn-ghost bg-teal-600 text-white"

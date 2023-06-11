@@ -1,18 +1,26 @@
+/* eslint-disable no-dupe-keys */
+/* eslint-disable no-unused-vars */
 
 import { useForm } from 'react-hook-form';
-import useAuth from '../../../../hooks/useAuth';
-import Swal from 'sweetalert2';
 
-///TODO hidden e ekta field rakhbo default valuer 0 for students . do it later
+import Swal from 'sweetalert2';
+import useAuth from '../../../../hooks/useAuth';
+
+
 const AddClass = () => {
   const { register, handleSubmit, reset } = useForm();
   const { user } = useAuth();
 
   const onSubmit = (data) => {
-    fetch(`http://localhost:5000/addclasses`, {
+    console.log(data)
+    const {name,image,instructorName,email, status, students, availableSeats, price}=data;
+
+    const classinfo = {name,image,instructorName,email, status, students, availableSeats, price, students: 0}
+
+    fetch(`http://localhost:5000/addclass`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
+      body: JSON.stringify(classinfo),
     })
       .then((res) => res.json())
       .then((result) => {
@@ -58,6 +66,10 @@ const AddClass = () => {
             <label htmlFor="status" className="block">Status:</label>
             <input id="status" type="text" {...register('status', { required: true })} defaultValue='pending' className="border border-gray-300 p-2 w-full" />
           </div>
+        {/*   <div className="mb-4 hidden">
+            <label htmlFor="students" className="block">Students:</label>
+            <input id="students" type="number" {...register('students', { required: true })} defaultValue='pending' className="border border-gray-300 p-2 w-full" />
+          </div> */}
           <div className="mb-4">
             <label htmlFor="availableSeats" className="block">Available seats:</label>
             <input id="availableSeats" type="number" {...register('availableSeats', { required: true })} className="border border-gray-300 p-2 w-full" />

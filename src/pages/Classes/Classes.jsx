@@ -2,16 +2,13 @@ import { useEffect, useState } from "react";
 import ClassCard from "../../components/ClassCard";
 
 
-
+//6ta card dekhabo
 const Classes = () => {
     const [classes, setClasses] = useState([]);
     useEffect(() => {
       fetch("http://localhost:5000/classes")
         .then((res) => res.json())
-        .then((data) => {
-          const popularClasses = data.filter((item) => item.availableSeats > 0);
-          popularClasses.sort((a, b) => b.availableSeats - a.availableSeats);
-          setClasses(popularClasses);
+        .then((data) => {setClasses(data);
         })
         .catch((error) => {
           console.error("Error fetching data:", error);

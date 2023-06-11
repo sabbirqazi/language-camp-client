@@ -37,7 +37,7 @@ const MyClasses = () => {
                 >
                   {myClass.status}
                 </button>
-                <p>Feedback{myClass.feedback}</p>
+                <p className="text-gray-600 mb-2">Feedback{myClass.feedback}</p>
               </div>
             ))}
           </div>

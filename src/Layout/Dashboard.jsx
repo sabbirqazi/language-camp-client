@@ -15,7 +15,7 @@ const Dashboard = () => {
     .then(data => {setIsInstructor(data)})
 
   }, [user.email]);
-  console.log(isInstructor);
+
 
   useEffect(()=> {
     fetch(`http://localhost:5000/users/admin/${user.email}`)
@@ -23,7 +23,7 @@ const Dashboard = () => {
     .then(data => {setIsAdmin(data)})
 
   }, [user.email])
- console.log(isAdmin)
+
   /* const isAdmin = false; */
 /*   const isInstructor = true; */
   return (
