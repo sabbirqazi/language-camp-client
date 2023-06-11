@@ -5,21 +5,25 @@ import { useEffect, useState } from "react";
 import useAuth from "../../../../hooks/useAuth";
 
 
-const CheckoutForm = ({price}) => {
-    console.log(price)
+const CheckoutForm = ({course, price}) => {
+    console.log(typeof(price))
     const stripe = useStripe();
     const elements = useElements();
     const [cardError, setCardError] =  useState('')
     const [clientSecret, setClientSecret] = useState("");
+    const [processing, setProcessing] = useState(false);
+    const [transactionId, setTransactionId] = useState('')
     const {user} =useAuth();
     useEffect(() => {   
-      fetch("http://localhost:5000/create-payment-intent", {
+   if(price){
+    fetch("http://localhost:5000/create-payment-intent", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({price}),
       })
         .then((res) => res.json())
         .then((data) => setClientSecret(data.clientSecret));
+   }
     }, [price]);
 
     const handleSubmit = async (event) => {
@@ -43,8 +47,9 @@ const CheckoutForm = ({price}) => {
         }
         else{
             setCardError('')
-            console.log('payment method', paymentMethod)
+      /*       console.log('payment method', paymentMethod) */
         }
+        setProcessing(true)
         const {paymentIntent, error:confirmError} = await stripe.confirmCardPayment(
             clientSecret,
             {
@@ -61,7 +66,42 @@ const CheckoutForm = ({price}) => {
             console.log(confirmError)
 
         }
-        console.log(paymentIntent)
+        setProcessing(false)
+        if(paymentIntent.status === 'succeeded'){
+            setTransactionId(paymentIntent.id);
+            //save payment 
+            const payment ={
+                email: user?.email,
+                transactionId: paymentIntent.id,
+                price, 
+                name: course.name,
+                date: new Date(),
+                courseId: course._id,
+                status: 'pending',
+            }
+        /*     const payment = {
+                email: user.email,
+                transactionId: paymentIntent.id,
+                price,
+                new_id: foundClass._id,
+                classId: foundClass.classId,
+                image: foundClass.image,
+                date: new Date().toLocaleDateString(),
+                courseName: foundClass.courseName,
+                availableSeats: parseInt(foundClass.availableSeats - 1)
+            } */
+            fetch('http://localhost:5000/payments', {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({payment}),
+              })
+              .then((res) => res.json())
+              .then((data) => console.log(data));
+           /*    if(data.insertedId){
+                //swal
+              } */
+               
+        }
     }
 
     return (
@@ -83,12 +123,15 @@ const CheckoutForm = ({price}) => {
                         },
                     }}
                 />
-                <button className="btn btn-primary btn-sm mt-4" type="submit" disabled={!stripe || !clientSecret}>
+                <button className="btn btn-primary btn-sm mt-4" type="submit" disabled={!stripe || !clientSecret || processing}>
                     Pay
                 </button>
             </form>
             {
                 cardError && <p className="text-red-700 ml-10">{cardError}</p>
+            }
+            {
+                transactionId && <p className="text-green-600 ml-10">Transaction succesful with TrxId {transactionId}</p>
             }
        </>
     );

@@ -18,13 +18,15 @@ const Payment = () => {
     //console getting data  
       }, [courseId]);
       console.log(course);
-      const price = parseFloat(course.price).toFixed(2);
+      const priceNumber = parseFloat(course.price).toFixed(2);
+      const price =parseFloat(priceNumber)
+      console.log(typeof(price))
     const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
     return (
         <div className="w-full">
             <h1 className="text-center text-3xl my-10 font-semibold">Payment</h1>
             <Elements stripe={stripePromise}>
-                <CheckoutForm price={price}></CheckoutForm>           
+                <CheckoutForm course={course} price={price}></CheckoutForm>           
             </Elements>
         </div>
     );
