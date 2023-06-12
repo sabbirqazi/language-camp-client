@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import { FaChalkboard, FaClipboardCheck, FaHistory, FaLaptop, FaPlusCircle, FaUserAlt } from 'react-icons/fa';
+import { FaChalkboard, FaChalkboardTeacher, FaClipboardCheck, FaHistory, FaHome, FaLaptop, FaPlusCircle, FaUserAlt } from 'react-icons/fa';
 import { GrCheckboxSelected } from "react-icons/gr";
 const Dashboard = () => {
   // TODO: load data from the server to have dynamic isAdmin and isInstructor based on Data
@@ -76,13 +76,13 @@ const Dashboard = () => {
           )}
           <div className="divider"></div>
           <li>
-            <NavLink to="/">Home</NavLink>{" "}
+            <NavLink to="/"><FaHome></FaHome>Home</NavLink>{" "}
           </li>
           <li>
-            <NavLink to="/classes">Classes</NavLink>
+            <NavLink to="/classes"><FaLaptop></FaLaptop>Classes</NavLink>
           </li>
           <li>
-            <NavLink to="/instructors">Instructors</NavLink>
+            <NavLink to="/instructors"><FaChalkboardTeacher></FaChalkboardTeacher>Instructors</NavLink>
           </li>
         </ul>
       </div>
