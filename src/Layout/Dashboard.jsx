@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-
-
+import { FaChalkboard, FaClipboardCheck, FaHistory, FaLaptop, FaPlusCircle, FaUserAlt } from 'react-icons/fa';
+import { GrCheckboxSelected } from "react-icons/gr";
 const Dashboard = () => {
   // TODO: load data from the server to have dynamic isAdmin and isInstructor based on Data
   // role based data 
@@ -38,43 +38,39 @@ const Dashboard = () => {
         Open Dashboard
         </label>
       </div>
-      <div className="drawer-side bg-sky-500">
+      <div className="drawer-side bg-[#FFE194]">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80">
           {isAdmin?.admin ? (
             <>
+              
               <li>
-                <NavLink to="/dashboard/home"> Admin Home</NavLink>
+                <NavLink to="/dashboard/manageclasses"><FaLaptop></FaLaptop> Manage Classes</NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/manageclasses"> Manage Classes</NavLink>
-              </li>
-              <li>
-                <NavLink to="/dashboard/manageusers">Manage Users</NavLink>
+                <NavLink to="/dashboard/manageusers"> <FaUserAlt></FaUserAlt>Manage Users</NavLink>
               </li>
             </>
           ) : isInstructor?.instructor ? (
             <>
               <li>
-                <NavLink to="/dashboard/instructorclasses"> My Classes</NavLink>
+                <NavLink to="/dashboard/instructorclasses"> <FaChalkboard></FaChalkboard>My Classes</NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/addclass">Add Class</NavLink>
+                <NavLink to="/dashboard/addclass"><FaPlusCircle></FaPlusCircle>Add Class</NavLink>
               </li>
             </>
           ) : (
             <>
+            
               <li>
-                <NavLink to="/dashboard/home"> Student Home</NavLink>
+                <NavLink to="/dashboard/selectedclass"><GrCheckboxSelected></GrCheckboxSelected>Selected Class</NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/selectedclass">Selected Class</NavLink>
+                <NavLink to="/dashboard/paymenthistory"><FaHistory></FaHistory> Payment History</NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/paymenthistory"> Payment History</NavLink>
-              </li>
-              <li>
-                <NavLink to="/dashboard/enrolledclass">Enrolled Class</NavLink>
+                <NavLink to="/dashboard/enrolledclass"><FaClipboardCheck></FaClipboardCheck>Enrolled Class</NavLink>
               </li>
             </>
           )}

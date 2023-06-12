@@ -64,7 +64,7 @@ const SignUp = () => {
       <div className="w-full max-w-sm ">
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+          className="bg-[#F6F1F1] shadow-md rounded px-8 pt-6 pb-8 mb-4"
         >
           <h2 className="text-2xl font-bold mb-4 text-center">Sign Up</h2>
           <div className="mb-4">
@@ -140,7 +140,7 @@ const SignUp = () => {
           <div className="text-center">
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="bg-[#4C3D3D] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             >
               Sign Up
             </button>
@@ -149,7 +149,7 @@ const SignUp = () => {
           <p className="p-3 text-xl text-center">
             Have already an account?
             <Link to="/login">
-              <span className=" text-sky-600"> Login here...</span>
+              <span className="text-blue-600"> Login here...</span>
             </Link>
           </p>
         </form>

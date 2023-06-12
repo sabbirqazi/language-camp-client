@@ -1,14 +1,18 @@
 /* eslint-disable no-undef */
 import { useEffect, useState } from "react";
+import useAuth from "../../../../hooks/useAuth";
 
 
 const PaymentHistory = () => {
  const [paymentHistory, setPaymentHistory] =useState([]); 
+ const {user } = useAuth()
+  const url =`http://localhost:5000/payments/enrolledclass?email=${user?.email}`
     useEffect(()=>{
-        fetch('http://localhost:5000/payments/history')
+
+        fetch(url)
         .then(res => res.json())
         .then(data => setPaymentHistory(data))
-    },[])
+    },[url, user])
     console.log(paymentHistory)
    
     /* const sortedHistory = paymentHistory.sort((a, b) => new Date(b.date) - new Date(a.date)); */

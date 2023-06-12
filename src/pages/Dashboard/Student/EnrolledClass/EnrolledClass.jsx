@@ -1,14 +1,16 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
+import useAuth from "../../../../hooks/useAuth";
 
 const EnrolledClass = () => {
+  const {user} = useAuth()
   const [enrolledClasses, setEnrolledClasses] = useState([]);
-  
+  const url =` http://localhost:5000/payments/enrolledclass?email=${user?.email}`
   useEffect(() => {
-    fetch('http://localhost:5000/payments/enrolledclass')
+    fetch(url)
       .then(res => res.json())
       .then(data => setEnrolledClasses(data));
-  }, []);
+  }, [user, url]);
 
   return (
     <div className="flex justify-center m-10">

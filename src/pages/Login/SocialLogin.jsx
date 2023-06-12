@@ -2,6 +2,7 @@
 
 import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import { FcGoogle } from "react-icons/fc";
 
 const SocialLogin = () => {
   const navigate = useNavigate();
@@ -40,12 +41,12 @@ const SocialLogin = () => {
   return (
     <>
       <div className="flex flex-col my-5 gap-5 justify-center items-center">
-        <button
-          className="btn btn-circle text-center h-10 w-10"
+        <div
+          className="text-center rounded-full cursor-pointer"
           onClick={handleGoogleLogin}
         >
-          Google
-        </button>
+          <FcGoogle className="h-8 w-8 "></FcGoogle>
+        </div>
       </div>
     </>
   );

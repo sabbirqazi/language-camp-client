@@ -3,7 +3,7 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import { useEffect, useState } from "react";
-import { FaMoon } from "react-icons/fa";
+
 
 const NavBar = () => {
   const { user, logOut } = useAuth();
@@ -24,7 +24,7 @@ const NavBar = () => {
   };
   return (
     <>
-      <div className="navbar bg-[#E0F4F5] shadow-2xl">
+      <div className="navbar bg-[#FFF8DE] shadow-2xl">
         <div className="navbar-start lg:ml-20">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -54,9 +54,9 @@ const NavBar = () => {
                     isActive
                       ? {
                           color: "#fff",
-                          background: "#015366",
+                          background: "#4C3D3D",
                         }
-                      : { color: "#212A3E", background: "#E0F4F5" }
+                      : { color: "#212A3E", background: "#FFF8DE" }
                   }
                   aria-label="Home"
                   title="Home"
@@ -74,9 +74,9 @@ const NavBar = () => {
                     isActive
                       ? {
                           color: "#fff",
-                          background: "#015366",
+                          background: "#4C3D3D",
                         }
-                      : { color: "#212A3E", background: "#E0F4F5" }
+                      : { color: "#212A3E", background: "#FFF8DE" }
                   }
                 >
                   Instructors
@@ -91,9 +91,9 @@ const NavBar = () => {
                     isActive
                       ? {
                           color: "#fff",
-                          background: "#015366",
+                          background: "#4C3D3D",
                         }
-                      : { color: "#212A3E", background: "#E0F4F5" }
+                      : { color: "#212A3E", background: "#FFF8DE" }
                   }
                 >
                   Classes
@@ -110,9 +110,9 @@ const NavBar = () => {
                       isActive
                         ? {
                             color: "#fff",
-                            background: "#015366",
+                            background: "#4C3D3D",
                           }
-                        : { color: "#212A3E", background: "#E0F4F5" }
+                        : { color: "#212A3E", background: "#FFF8DE" }
                     }
                   >Dashboard</NavLink>
                 </li>
@@ -121,11 +121,8 @@ const NavBar = () => {
           </div>
           <Link
             to="/"
-            className="hidden lg:flex justify-center items-center normal-case text-xl text-[#015366]"
+            className="hidden lg:flex justify-center items-center normal-case text-xl text-[C07F00]"
           >
-            {/*  <span className="mr-1">
-              <img className="w-10 h-10" src='' alt="logo" />{" "}
-            </span>{" "} */}
             <span>LangoCamp</span>
           </Link>
         </div>
@@ -140,9 +137,9 @@ const NavBar = () => {
                   isActive
                     ? {
                         color: "#fff",
-                        background: "#015366",
+                        background: "#4C3D3D",
                       }
-                    : { color: "#212A3E", background: "#E0F4F5" }
+                    : { color: "#212A3E", background: "#FFF8DE" }
                 }
               >
                 Home
@@ -158,9 +155,9 @@ const NavBar = () => {
                   isActive
                     ? {
                         color: "#fff",
-                        background: "#015366",
+                        background: "#4C3D3D",
                       }
-                    : { color: "#212A3E", background: "#E0F4F5" }
+                    : { color: "#212A3E", background: "#FFF8DE" }
                 }
               >
                 Instructors
@@ -175,9 +172,9 @@ const NavBar = () => {
                   isActive
                     ? {
                         color: "#fff",
-                        background: "#015366",
+                        background: "#4C3D3D",
                       }
-                    : { color: "#212A3E", background: "#E0F4F5" }
+                    : { color: "#212A3E", background: "#FFF8DE" }
                 }
               >
                 Classes
@@ -193,9 +190,9 @@ const NavBar = () => {
                     isActive
                       ? {
                           color: "#fff",
-                          background: "#015366",
+                          background: "#4C3D3D",
                         }
-                      : { color: "#212A3E", background: "#E0F4F5" }
+                      : { color: "#212A3E", background: "#FFF8DE" }
                   }
                 >Dashboard</NavLink>
               </li>
@@ -236,14 +233,14 @@ const NavBar = () => {
           {user ? (
             <Link
               onClick={handleLogOut}
-              className="px-4 py-3 rounded-md  bg-[#015366] text-[#fff]"
+              className="px-4 py-3 rounded-md  bg-[#4C3D3D] text-[#fff]"
             >
               Logout
             </Link>
           ) : (
             <Link
               to={"/login"}
-              className="px-4 py-3 rounded-md  bg-[#015366] text-[#fff]"
+              className="px-4 py-3 rounded-md  bg-[#4C3D3D] text-[#fff]"
             >
               Login
             </Link>
