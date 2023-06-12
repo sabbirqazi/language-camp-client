@@ -17,7 +17,7 @@ const AddClass = () => {
 
     const classinfo = {name,image,instructorName,email, status, students, availableSeats, price, students: 0}
 
-    fetch(`http://localhost:5000/addclass`, {
+    fetch(`https://foreign-language-server.vercel.app/addclass`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(classinfo),

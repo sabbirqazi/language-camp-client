@@ -6,7 +6,7 @@ import useAuth from "../../../../hooks/useAuth";
 const PaymentHistory = () => {
  const [paymentHistory, setPaymentHistory] =useState([]); 
  const {user } = useAuth()
-  const url =`http://localhost:5000/payments/enrolledclass?email=${user?.email}`
+  const url =`https://foreign-language-server.vercel.app/payments/enrolledclass?email=${user?.email}`
     useEffect(()=>{
 
         fetch(url)

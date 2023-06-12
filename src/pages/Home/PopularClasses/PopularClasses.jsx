@@ -5,7 +5,7 @@ const PopularClasses = () => {
   const [classes, setClasses] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/classes")
+    fetch("https://foreign-language-server.vercel.app/classes")
       .then((res) => res.json())
       .then((data) => {
         const popularClasses = data.filter((item) => item.availableSeats > 0);

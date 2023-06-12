@@ -16,7 +16,7 @@ const CheckoutForm = ({newClassId, course, price}) => {
     const {user} =useAuth();
     useEffect(() => {   
    if(price){
-    fetch("http://localhost:5000/create-payment-intent", {
+    fetch("https://foreign-language-server.vercel.app/create-payment-intent", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({price}),
@@ -92,7 +92,7 @@ const CheckoutForm = ({newClassId, course, price}) => {
                 courseName: foundClass.courseName,
                 availableSeats: parseInt(foundClass.availableSeats - 1)
             } */
-            fetch('http://localhost:5000/payments', {
+            fetch('https://foreign-language-server.vercel.app/payments', {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payment),

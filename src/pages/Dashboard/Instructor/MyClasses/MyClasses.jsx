@@ -6,7 +6,7 @@ import useAuth from "../../../../hooks/useAuth";
 const MyClasses = () => {
     const [ myClasses, setMyClasses] = useState([]);
     const {user} = useAuth()
-    const url = `http://localhost:5000/instructorclasses?email=${user?.email}`;
+    const url = `https://foreign-language-server.vercel.app/instructorclasses?email=${user?.email}`;
    
     //get the data using email for specific user
     useEffect(() => {

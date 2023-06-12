@@ -14,7 +14,7 @@ const Payment = () => {
     const [course, setCourse] = useState({})
     useEffect(() => {
       
-        fetch(`http://localhost:5000/myclasses/${courseId}`)
+        fetch(`https://foreign-language-server.vercel.app/myclasses/${courseId}`)
         .then((res) => res.json())
         .then((data) => setCourse(data));
     

@@ -10,7 +10,7 @@ const Dashboard = () => {
   const [isAdmin, setIsAdmin] = useState(false)
   const {user} =useAuth();
   useEffect(()=> {
-    fetch(`http://localhost:5000/users/instructor/${user.email}`)
+    fetch(`https://foreign-language-server.vercel.app/users/instructor/${user.email}`)
     .then(res => res.json())
     .then(data => {setIsInstructor(data)})
 

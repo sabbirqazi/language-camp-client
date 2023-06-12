@@ -5,21 +5,21 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 
 const ManageClasses = () => {
-
+  
 
   const [feedbackModalOpen, setFeedbackModalOpen] = useState(false);
-  const [feedbackText, setFeedbackText] = useState("OK");
+  const [feedbackText, setFeedbackText] = useState("");
   const [selectedClassId, setSelectedClassId] = useState("");
 
 
   const { data: classes = [], refetch } = useQuery(["classes"], async () => {
-    const res = await fetch("http://localhost:5000/classes");
+    const res = await fetch("https://foreign-language-server.vercel.app/classes");
     return res.json();
   });
 
   const handleApprove = (classItem) => {
     fetch(
-      `http://localhost:5000/classes/manageclasses/approve/${classItem._id}`,
+      `https://foreign-language-server.vercel.app/classes/manageclasses/approve/${classItem._id}`,
       {
         method: "PATCH",
       }
@@ -43,7 +43,7 @@ const ManageClasses = () => {
 
   const handleDeny = (classItem) => {
     // Handle deny logic
-    fetch(`http://localhost:5000/classes/manageclasses/deny/${classItem._id}`, {
+    fetch(`https://foreign-language-server.vercel.app/classes/manageclasses/deny/${classItem._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -69,7 +69,7 @@ const ManageClasses = () => {
   };
   const handleSubmitFeedback = () => {
     const classesItem = classes.find((item) => item._id === selectedClassId);
-    fetch(`http://localhost:5000/classes/manageclasses/deny/${classesItem._id}`, {
+    fetch(`https://foreign-language-server.vercel.app/classes/manageclasses/deny/${classesItem._id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

@@ -24,7 +24,7 @@ const SignUp = () => {
         console.log(loggedUser);
         profileUpdate(data.name, data.photoUrl).then(() => {
           const saveUser = { name: data.name, email: data.email, image: data.photoUrl };
-          fetch("http://localhost:5000/users", {
+          fetch("https://foreign-language-server.vercel.app/users", {
             method: "POST",
             headers: {
               "content-type": "application/json",

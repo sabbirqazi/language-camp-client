@@ -9,7 +9,7 @@ const SelectedClass = () => {
   const { user } = useAuth();
   const [selectedClass, setSelectedClass] = useState([]);
 
-  const url = `http://localhost:5000/myclasses?email=${user?.email}`;
+  const url = `https://foreign-language-server.vercel.app/myclasses?email=${user?.email}`;
   /*  const [control, setControl] = useState(false); */
   //get the data using email for specific user
   useEffect(() => {
