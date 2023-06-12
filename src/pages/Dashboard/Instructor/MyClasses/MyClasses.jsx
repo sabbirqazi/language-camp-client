@@ -20,7 +20,7 @@ const MyClasses = () => {
     return (
         <div className="flex justify-center mt-8">
         <div className="max-w-4xl">
-          <h2 className="text-2xl font-bold mb-4 text-center">My Classes</h2>
+          <h2 className="text-2xl font-bold mb-4 text-center text-black">My Classes</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {myClasses?.map((myClass) => (
               <div key={myClass._id} className="bg-white rounded shadow-lg p-4">

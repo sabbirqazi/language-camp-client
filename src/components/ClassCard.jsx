@@ -3,7 +3,8 @@
 
 import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-
+import { LuBookmarkPlus } from "react-icons/lu";
+import Swal from "sweetalert2";
 
 const ClassCard = ({ classItem }) => {
 
@@ -23,6 +24,13 @@ const ClassCard = ({ classItem }) => {
             },
             body: JSON.stringify(saveMyClass),
           })
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Class added to Selected Class successfully.",
+            showConfirmButton: false,
+            timer: 1500,
+          });
    
     } else {
       // User is not logged in, redirect to the login page
@@ -32,24 +40,28 @@ const ClassCard = ({ classItem }) => {
 
   return (
     <div className="mx-auto px-4">
-      <div className="bg-white rounded-md shadow-md p-4 w-96">
-        <img 
+    <div className="bg-black hover:bg-teal-400 rounded-md shadow-md p-5 lg:py-[8] w-[355px] lg:w-[550px] flex transition-colors duration-300 ">
+      <div className="flex-shrink-0">
+        <img
           src={classItem.image}
           alt={classItem.name}
-          className="w-full h-40 object-cover rounded-md"
+          className="w-44 h-44 object-cover rounded-md"
         />
-        <h2 className="text-lg font-semibold mt-2">{classItem.name}</h2>
-        <p className="text-gray-600">Instructor: {classItem.instructorName}</p>
-        <p className="text-gray-600">Available seats: {classItem.availableSeats}</p>
-        <p className="text-gray-600">Price: {classItem.price}</p>
-        <div className="flex justify-center mt-4">
-          {/* button disabled if seat 0  */}
-        <button className="bg-blue-500 text-white px-4 py-2 rounded-md" onClick={() => handleSelectCourse(classItem)}>
-            Select Course
+      </div>
+      <div className="ml-5">
+      <p className="font-semibold text-md hover:text-white text-red-500"> ${classItem.price}</p>
+        <h2 className="text-lg font-semibold mt-2 text-white">{classItem.name}</h2>
+        <p className="text-white font-semibold mt-2">{classItem.instructorName}</p>
+        <p className="text-white font-semibold mt-2">Available seats: {classItem.availableSeats}</p>
+        <button className="bg-orange-500 text-white p-3 mt-2 rounded-full" alt="Select" onClick={() => handleSelectCourse(classItem)}>
+          <span><LuBookmarkPlus className="h-5 w-5"></LuBookmarkPlus></span>
           </button>
-        </div>
+        
+    
       </div>
     </div>
+  </div>
+  
   );
 };
 

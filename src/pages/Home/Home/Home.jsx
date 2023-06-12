@@ -1,4 +1,6 @@
 
+
+import FAQ from "../FAQ/FAQ";
 import Hero from "../Hero/Hero";
 import PopularClasses from "../PopularClasses/PopularClasses";
 
@@ -13,6 +15,8 @@ const Home = () => {
            <Hero></Hero>
           <PopularClasses></PopularClasses>
           <PopularInstructors></PopularInstructors>
+   
+          <FAQ></FAQ>
           </>
         
     );
