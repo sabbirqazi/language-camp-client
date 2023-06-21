@@ -23,7 +23,7 @@ const PopularInstructors = () => {
             <img
               src={instructor.image}
               alt="Instructor"
-              className="w-full object-fit mb-4"
+              className="w-80 h-80"
             />
             <h2 className="text-lg font-semibold text-black">{instructor.name}</h2>
             <p className="text-gray-600 mb-2">Email: {instructor.email}</p>

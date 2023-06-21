@@ -38,7 +38,7 @@ const Dashboard = () => {
         Open Dashboard
         </label>
       </div>
-      <div className="drawer-side bg-[#FFE194]">
+      <div className="drawer-side bg-teal-500">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80">
           {isAdmin?.admin ? (

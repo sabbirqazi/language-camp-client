@@ -43,7 +43,7 @@ const AddClass = () => {
 
   return (
     <div className="flex justify-center mt-8 w-full">
-      <div className="max-w-md bg-white rounded shadow-lg p-6 w-full">
+      <div className="max-w-md bg-[#F6F1F1] rounded shadow-lg p-6 w-full">
         <h2 className="text-2xl font-bold mb-4 text-center">Add a Class</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
@@ -79,7 +79,7 @@ const AddClass = () => {
             <input id="price" type="number" {...register('price', { required: true })} className="border border-gray-300 p-2 w-full" />
           </div>
          
-          <button type="submit" className="bg-blue-500 text-white px-8 py-2 rounded mx-auto block">Add Class</button>
+          <button type="submit" className="bg-[#4C3D3D] text-white px-8 py-2 rounded mx-auto block">Add Class</button>
         </form>
       </div>
     </div>
