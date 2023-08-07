@@ -1,6 +1,9 @@
 
 
 import FAQ from "../FAQ/FAQ";
+import Feedback from "../Feedback/Feedback";
+import GetStarted from "../GetStarted/GetStarted";
+import GlobalCommunity from "../GlobalCommunity/GlobalCommunity";
 import Hero from "../Hero/Hero";
 import PopularClasses from "../PopularClasses/PopularClasses";
 
@@ -15,6 +18,9 @@ const Home = () => {
            <Hero></Hero>
           <PopularClasses></PopularClasses>
           <PopularInstructors></PopularInstructors>
+          <GetStarted></GetStarted>
+          <GlobalCommunity></GlobalCommunity>
+          <Feedback></Feedback>
           <FAQ></FAQ>
           </>
         
