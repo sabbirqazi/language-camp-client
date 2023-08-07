@@ -1,5 +1,6 @@
 
 
+import Blog from "../Blog/Blog";
 import FAQ from "../FAQ/FAQ";
 import Feedback from "../Feedback/Feedback";
 import GetStarted from "../GetStarted/GetStarted";
@@ -21,6 +22,7 @@ const Home = () => {
           <GetStarted></GetStarted>
           <GlobalCommunity></GlobalCommunity>
           <Feedback></Feedback>
+          <Blog></Blog>
           <FAQ></FAQ>
           </>
         
