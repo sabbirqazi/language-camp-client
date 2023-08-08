@@ -9,12 +9,12 @@ const FAQ = () => {
         <h2 className="text-3xl font-bold ml-2 mb-5 ">
           Learn Your Best Foreign <br /> Language with LangoCamp
         </h2>
-        <div className="collapse collapse-arrow shadow-md bg-base-300 mb-4">
+        <div className="collapse collapse-plus shadow-lg bg-base-300 mb-4">
           <input type="radio" name="my-accordion-2" id="faq-1" defaultChecked />
-          <div className="collapse-title text-xl font-medium bg-teal-400">
+          <div className="collapse-title text-xl font-medium bg-[#5b70f9]">
             Why should I learn a foreign language?
           </div>
-          <div className="collapse-content">
+          <div className="collapse-content bg-white">
             <p>
               Learning a foreign language offers numerous benefits. It enhances
               your cognitive abilities, improves memory, and boosts
@@ -25,12 +25,12 @@ const FAQ = () => {
             </p>
           </div>
         </div>
-        <div className="collapse collapse-arrow bg-base-300 mb-4">
+        <div className="collapse collapse-plus bg-base-300 mb-4">
           <input type="radio" name="my-accordion-2" id="faq-2" />
-          <div className="collapse-title text-xl font-medium bg-teal-400">
+          <div className="collapse-title text-xl font-medium bg-[#5b70f9]">
             How can I learn a foreign language effectively?
           </div>
-          <div className="collapse-content">
+          <div className="collapse-content bg-white">
             <p>
               Effective language learning involves consistent practice and
               exposure. Consider taking language courses or using online
@@ -42,12 +42,12 @@ const FAQ = () => {
             </p>
           </div>
         </div>
-        <div className="collapse collapse-arrow bg-base-300 mb-4">
-          <input type="radio" name="my-accordion-2" id="faq-3" />
-          <div className="collapse-title text-xl font-medium bg-teal-400">
+        <div className="collapse collapse-plus bg-base-300 mb-4">
+          <input type="radio"  name="my-accordion-2" id="faq-3" />
+          <div className="collapse-title text-xl font-medium bg-[#5b70f9]">
             What should I focus on when learning a foreign language?
           </div>
-          <div className="collapse-content">
+          <div className="collapse-content bg-white">
             <p>
               When learning a foreign language, focus on the four essential
               skills: listening, speaking, reading, and writing. Practice
@@ -60,12 +60,12 @@ const FAQ = () => {
             </p>
           </div>
         </div>
-        <div className="collapse collapse-arrow bg-base-300 mb-4">
+        <div className="collapse collapse-plus bg-base-300 mb-4">
           <input type="radio" name="my-accordion-2" id="faq-4" />
-          <div className="collapse-title text-xl font-medium bg-teal-400">
+          <div className="collapse-title text-xl font-medium bg-[#5b70f9]">
             Is it ever too late to learn a foreign language?
           </div>
-          <div className="collapse-content">
+          <div className="collapse-content bg-white">
             <p>
               It is never too late to learn a foreign language! While it may
               require more effort and practice as you get older, age is not a

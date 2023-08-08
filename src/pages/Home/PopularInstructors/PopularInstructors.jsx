@@ -18,7 +18,7 @@ const PopularInstructors = () => {
         {instructors?.map((instructor) => (
           <div
             key={instructor?._id}
-            className="card bg-[#F6F1F1] rounded-md shadow-md p-4 w-80 lg:w-96"
+            className="card bg-cyan-100 rounded-md shadow-md p-4 w-80 lg:w-96"
           >
             <img
               src={instructor.image}

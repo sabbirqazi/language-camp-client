@@ -52,7 +52,7 @@ const ClassCard = ({ classItem }) => {
         whileHover={{ scale: 1.1 }}
         onHoverStart={(e) => {}}
         onHoverEnd={(e) => {}}
-        className="bg-slate-700 hover:bg-teal-400 rounded-md shadow-md p-5 lg:py-[8] w-[355px] lg:w-[550px] flex transition-colors duration-300"
+        className="bg-slate-700 hover:bg-gradient-to-r from-cyan-500 to-blue-500 rounded-md shadow-md p-5 lg:py-[8] w-[355px] lg:w-[550px] flex transition-colors duration-300"
       >
         <div className="flex-shrink-0">
           <img
