@@ -54,7 +54,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="flex justify-center items-center my-10 gap-10">
+    <div className="flex flex-col lg:flex-row justify-center items-center my-10 gap-10">
       <div>
         <img
           src="https://img.freepik.com/premium-vector/sign-page-abstract-concept-vector-illustration_107173-25670.jpg"

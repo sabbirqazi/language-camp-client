@@ -46,7 +46,7 @@ const Login = () => {
   return (
     <div className="mt-10">
       <div className="">
-        <div className="flex justify-center gap-10">
+        <div className="flex flex-col lg:flex-row justify-center gap-10">
           <div>
             <img
               src="https://i.ibb.co/2ndWspf/pngtree-online-registration-or-sign-up-login-for-account-on-smartphone-app-png-image-4740849.png"

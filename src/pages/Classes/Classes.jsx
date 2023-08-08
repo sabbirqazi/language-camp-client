@@ -16,7 +16,7 @@ const Classes = () => {
     }, []);
      console.log(classes)
     return (
-      <div className="m-20">
+      <div className="my-20 mx-1 items-center justify-center">
           <h1 className="text-5xl font-bold text-center mb-10">Our Popular Classes</h1>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 space-y-10 justify-center items-center">
           {classes?.map((classItem) => (
