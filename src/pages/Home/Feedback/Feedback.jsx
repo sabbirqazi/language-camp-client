@@ -1,4 +1,6 @@
-
+import user1 from "../../../assets/images/user1.jpg"
+import user2 from "../../../assets/images/user2.jpg"
+import user3 from "../../../assets/images/user3.jpg"
 const Feedback = () => {
     return (
         <div className="text-center p-20 bg-[#5b70f9] ">
@@ -22,7 +24,7 @@ const Feedback = () => {
       <div className="flex items-center p-3">
         <img
           className="w-12 h-12 border-2 rounded-full mr-4"
-          src="/src/assets/images/user1.jpg"
+          src={user1}
           alt="User Profile"
         />
         <div>
@@ -41,7 +43,7 @@ const Feedback = () => {
       <div className="flex items-center p-3">
         <img
           className="w-12 h-12 border-2 rounded-full mr-4"
-          src="/src/assets/images/user2.jpg"
+          src={user2}
           alt="User Profile"
         />
         <div>
@@ -60,7 +62,7 @@ const Feedback = () => {
       <div className="flex items-center p-3">
         <img
           className="w-12 h-12 border-2 rounded-full mr-4"
-          src="/src/assets/images/user3.jpg"
+          src={user3}
           alt="User Profile"
         />
         <div>

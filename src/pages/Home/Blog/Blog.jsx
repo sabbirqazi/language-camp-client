@@ -1,4 +1,4 @@
-
+import book from "../../../assets/images/open-book.png"
 const Blog = () => {
     return (
         <div className="text-center p-20 bg-gradient-to-r from-cyan-100 to-blue-100 relative ">
@@ -12,7 +12,7 @@ const Blog = () => {
       </div>
       <div className="flex flex-col gap-4 items-center">
         <div className="flex justify-between items-center bg-white p-6 gap-10 hover:border-b-4 hover:border-x  border-[#5b70f9] rounded-lg w-max lg:w-[880px] h-[104px] shadow-md">
-            <img src="/src/assets/images/open-book.png" className="h-12 w-12 lg:block hidden" alt="" />
+            <img src={book} className="h-12 w-12 lg:block hidden" alt="" />
             <div className="flex flex-col gap-1 text-start">
                 <p className="text-md font-bold">Standard English</p>
                 <p className="text-[#717f94]">Lesson: 600</p>
@@ -21,7 +21,7 @@ const Blog = () => {
             <button className="btn btn-outline btn-sm text-[#5b70f9] outline-[#5b70f9] hover:bg-[#5b70f9] hover:outline-none rounded-md">Read More</button>
         </div>
         <div className="flex justify-between items-center bg-white p-6 gap-10 hover:border-b-4 hover:border-x border-[#5b70f9] rounded-lg w-max lg:w-[880px] h-[104px] shadow-md">
-            <img src="/src/assets/images/open-book.png" className="h-12 w-12 lg:block hidden" alt="" />
+            <img src={book} className="h-12 w-12 lg:block hidden" alt="" />
             <div className="flex flex-col gap-1 text-start">
                 <p className="text-md font-bold">Advance Bengali</p>
                 <p className="text-[#717f94]">Lesson: 600</p>
@@ -30,7 +30,7 @@ const Blog = () => {
             <button className="btn btn-outline btn-sm text-[#5b70f9] outline-[#5b70f9] hover:bg-[#5b70f9] hover:outline-none rounded-md">Read More</button>
         </div>
         <div className="flex justify-between items-center bg-white p-6 gap-10 hover:border-b-4 hover:border-x border-[#5b70f9]  rounded-lg w-max lg:w-[880px] h-[104px] shadow-md">
-            <img src="/src/assets/images/open-book.png" className="h-12 w-12 lg:block hidden" alt="" />
+            <img src={book} className="h-12 w-12 lg:block hidden" alt="" />
             <div className="flex flex-col gap-1 text-start">
                 <p className="text-md font-bold">Basic Portuguese</p>
                 <p className="text-[#717f94]">Lesson: 200</p>
@@ -39,7 +39,7 @@ const Blog = () => {
             <button className="btn btn-outline btn-sm text-[#5b70f9] outline-[#5b70f9] hover:bg-[#5b70f9] hover:outline-none rounded-md">Read More</button>
         </div>
         <div className="flex justify-between items-center bg-white p-6 gap-10 hover:border-b-4 hover:border-x border-[#5b70f9]  rounded-lg w-max lg:w-[880px] h-[104px] shadow-md">
-            <img src="/src/assets/images/open-book.png" className="h-12 w-12 lg:block hidden" alt="" />
+            <img src={book} className="h-12 w-12 lg:block hidden" alt="" />
             <div className="flex flex-col gap-1 text-start">
                 <p className="text-md font-bold">Basic Portuguese</p>
                 <p className="text-[#717f94]">Lesson: 200</p>
