@@ -1,11 +1,12 @@
 import { Outlet } from "react-router-dom";
-import NavBar from "../pages/Shared/NavBar/NavBar";
+
 import Footer from "../pages/Shared/Footer/Footer";
+import Navbar from "../pages/Shared/Navbar";
 
 const LoginLayout = () => {
   return (
     <div>
-      <NavBar></NavBar>
+      <Navbar></Navbar>
       <div className="min-h-[calc(100vh-136px)]">
         <Outlet />
       </div>

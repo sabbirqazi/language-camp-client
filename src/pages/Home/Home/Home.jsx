@@ -1,6 +1,7 @@
 
 
 import Blog from "../Blog/Blog";
+import Categories from "../Categories/Categories";
 import FAQ from "../FAQ/FAQ";
 import Feedback from "../Feedback/Feedback";
 import GetStarted from "../GetStarted/GetStarted";
@@ -16,7 +17,8 @@ const Home = () => {
     return (
         
           <>
-           <Hero></Hero>
+         <Hero></Hero>
+         <Categories></Categories>
           <PopularClasses></PopularClasses>
           <PopularInstructors></PopularInstructors>
           <GetStarted></GetStarted>

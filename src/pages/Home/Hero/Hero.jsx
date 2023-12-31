@@ -1,56 +1,35 @@
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
-import imageOne from "../../../assets/images/Colored Patterns.svg";
-import imageTwo from "../../../assets/images/benefits.jpg";
-import imageThree from "../../../assets/images/book-link01.jpg";
-import imageFour from "../../../assets/images/best-language-learning-method-for-adults.png";
+import { IoMdArrowForward } from "react-icons/io";
+
 const Hero = () => {
   return (
-  
-   <Carousel >
- <div className="hero min-h-screen bg-cover" style={{ backgroundImage: `url('${imageOne}')` }}>
-    <div className="hero-overlay bg-opacity-30"></div>
-    <div className="hero-content text-center text-neutral-content">
-      <div className="">
-        <h1 className="mb-8 text-5xl font-bold text-white">Enjoy Summer & Learn Languages</h1>
-        <p className="mb-8 text-white  font-semibold text-md">Learning a foreign language not only reveals how other societies think and feel, what they have experienced and value, and how they express themselves, it also provides a cultural mirror in which we can more clearly see our own society. <br /> - Chancellor Edward Lee Gorsuch</p>
-        <button className="btn btn-success">Get Started</button>
-      </div>
-    </div>
-  </div>
-  <div className="hero min-h-screen bg-cover" style={{ backgroundImage: `url('${imageThree}')` }}>
-    <div className="hero-overlay "></div>
-    <div className="hero-content text-center text-neutral-content">
-      <div className="">
-        <h1 className="mb-8 text-5xl font-extrabold text-white">Foreign Language Is An Awesome Skill</h1>
-        <p className="mb-8 text-white  font-semibold text-md">Language is the road map of a culture. It tells you where its people come from and where they are going. <br /> -Rita Mae Brown </p>
-        <button className="btn btn-success">Get Started</button>
-      </div>
-    </div>
-  </div>
-  <div className="hero min-h-screen bg-cover" style={{ backgroundImage: `url('${imageTwo}')` }}>
-    <div className="hero-overlay "></div>
-    <div className="hero-content text-center text-neutral-content">
-      <div className="">
-        <h1 className="mb-5 text-5xl font-bold text-white">Communicate With Entire World</h1>
-        <p className="mb-5 text-white font-semibold text-md">One language sets you in a corridor for life. Two languages open every door along the. <br />  - Frank Smith. </p>
-        <button className="btn btn-success">Get Started</button>
-      </div>
-    </div>
-  </div>
-  <div className="hero min-h-screen bg-cover" style={{ backgroundImage: `url('${imageFour}')` }}>
-    <div className="hero-overlay "></div>
-    <div className="hero-content text-center text-neutral-content">
-      <div className="">
-        <h1 className="mb-5 text-5xl font-bold text-white">Lets Start With Hello </h1>
-        <p className="mb-5 text-white font-semibold text-md">To learn a language is to have one more window from which to look at the world. <br /> - Chinese Proverb.</p>
-        <button className="btn btn-success">Get Started</button>
-      </div>
-    </div>
-  </div>
+    <section className="py-12 xl:py-24 h-[100%] xl:pt-28 bg-[#2356F6] ">
+      <div className="container mx-auto">
+        <div className=" flex flex-col md:flex-row justify-between gap-8 ">
+          <div className="flex flex-col justify-center mx-auto xl:mx-0 text-center xl:text-left ">
+            <h1 className="h1 text-white">
+              An Online Education <br /> Platform For Global <br />
+              <span className="text-[#F2A227]">Learners</span>
+            </h1>
+            <p className="p mb-10 text-white">
+              We are experienced in educational platform and <br /> skilled
+              strategies for the success of our online learning.
+            </p>
+            <button className="mx-auto md:mx-0 px-6 w-56 h-16 rounded-md cursor-pointer flex gap-2 font-semibold text-lg items-center bg-white  transition-transform duration-300 transform hover:translate-x-1 hover:bg-[#F2A227]">
+    <span>Find The Course</span>
+    <IoMdArrowForward
+        size={24}
+        className=""
+    />
+</button>
 
-   </Carousel>
-    
+          </div>
+
+          <div className="mx-3 xl:mx-0">
+            <img src="/src/assets/images/hero-img.png" alt="hero-img" />
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 
