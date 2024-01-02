@@ -19,7 +19,7 @@ const PopularInstructors = () => {
         {instructors?.map((instructor) => (
           <div
             key={instructor?._id}
-            className="w-[370px] h-[527px] bg-white shadow-md p-5 flex flex-col gap-3"
+            className="w-[370px] h-[527px] bg-white hover:bg-[#1AB69D] hover:text-white duration-300 shadow-md p-5 flex flex-col gap-3"
           >
    
          <img
